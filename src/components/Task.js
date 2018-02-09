@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import CompletedCheckbox from './CompletedCheckbox';
 import EditButton from './buttons/EditButton';
 
-export default class Category extends Component {
+export default class Category extends PureComponent {
   render() {
     return (
       <div>
         <div className='task-heading'>
           <CompletedCheckbox />
           <span>{this.props.taskName}</span>
-          <EditButton buttonTitle='Edit' itemType='task'/>
+          <EditButton buttonTitle='Edit' itemType='task' />
         </div>
         <div className='task-edit'>
-          <EditButton buttonTitle='Edit'/>
+          <EditButton buttonTitle='Edit' />
         </div>
       </div>
-    )
+    );
   }
 }

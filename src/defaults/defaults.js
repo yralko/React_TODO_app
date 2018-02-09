@@ -1,6 +1,6 @@
 export const defaultState = {
   categories: [],
-  currentCategory: null,
+  currentCategory: 'test',
 }
 
 // Categories and tasks schema

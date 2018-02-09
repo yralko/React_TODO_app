@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
-import Category from './Category';
+import React, { PureComponent } from 'react';
 import uniqid from 'uniqid';
+import { connect } from 'react-redux';
+import Category from './Category';
 
-export default class Main extends Component {
+class CategoryList extends PureComponent {
   render() {
+    const items = this.props.categories.map(v => (
+      <Category categoryName={v.name} key={uniqid()} />
+    ));
+
     return (
-      <main>
-        <Category categoryName={uniqid('CATEGORY-')}/>
-        <Category categoryName={uniqid('CATEGORY-')}/>
-        <Category categoryName={uniqid('CATEGORY-')}/>
-        <Category categoryName={uniqid('CATEGORY-')}/>
-      </main>
-    )
+      <div>
+        {items}
+      </div>
+    );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    categories: state.categories,
+  };
+}
+
+export default connect(mapStateToProps)(CategoryList);

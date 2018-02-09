@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AddItem from '../AddItem';
 
-export default class TitleRow extends Component {
-  render() {
-    return (
-      <div>
-        <AddItem className='add-category' placeholder='Enter category title' buttonTitle='Add' inputID='new-category'/>
-        <AddItem className='add-task' placeholder='Enter task name' buttonTitle='Add' inputID='new-task'/>
-      </div>
-    )
-  }
+export default function TitleRow() {
+  return (
+    <div>
+      <AddItem className='add-category' placeholder='Enter category title' buttonTitle='Add' inputType='new-category' />
+      <AddItem className='add-task' placeholder='Enter task name' buttonTitle='Add' inputType='new-task' />
+    </div>
+  );
 }

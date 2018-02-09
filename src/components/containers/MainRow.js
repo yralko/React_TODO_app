@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import CategoryList from '../CategoryList';
 import TaskList from '../TaskList';
 import EditTask from '../EditTask';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 export default class MainRow extends Component {
   render() {

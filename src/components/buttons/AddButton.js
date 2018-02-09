@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
-import store from '../../store/store';
-import uniqid from 'uniqid';
-import { Link, Route } from 'react-router-dom';
-import Header from '../containers/Header';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { addCategory, addTask } from '../../actions/actions';
 
-export default class AddButton extends Component {
+class AddButton extends Component {
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(text) {
-    const input = document.getElementById(this.props.inputID);
+  handleClick() {
+    const inputValue = document.getElementById(this.props.inputType).value;
+
+    switch (this.props.inputType) {
+      case 'new-category':
+        this.props.addCategory(inputValue);
+        break;
+      case 'new-task':
+        this.props.addTask(inputValue);
+        break;
+      default:
+    }
   }
 
   render() {
     return (
       <button onClick={this.handleClick}>{this.props.buttonTitle}</button>
-    )
+    );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    categories: state.categories,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    addCategory,
+    addTask,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddButton);
